@@ -1,6 +1,6 @@
 package ro.pao.service;
 
-import ro.pao.model.ExampleClass;
+import ro.pao.model.User;
 
 import java.util.List;
 import java.util.Optional;
@@ -18,19 +18,19 @@ import java.util.UUID;
  * In acel serviciu se apeleaza doar metode pe obiectul 'Animal'.
  * De exemplu: "getAnimalById", "removeAnimalById" etc.
  */
-public interface ExampleService {
+public interface UserService {
 
-    Optional<ExampleClass> getById(UUID id);
+    Optional<User> getById(UUID id);
 
-    Optional<ExampleClass> getBySomeFieldOfClass(Object someFieldFromExampleClass);
+    Optional<User> getBySomeFieldOfClass(Object someFieldFromUser);
 
-    List<ExampleClass> getAllFromList();
+    List<User> getAllFromList();
 
-    void addAllFromGivenList(List<ExampleClass> exampleClassList);
+    void addAllFromGivenList(List<User> UserList);
 
-    void addOnlyOne(ExampleClass exampleClass);
+    void addOnlyOne(User user);
 
     void removeElementById(UUID id);
 
-    void modificaElementById(UUID id, ExampleClass newElement);
+    void modificaElementById(UUID id, User newElement);
 }

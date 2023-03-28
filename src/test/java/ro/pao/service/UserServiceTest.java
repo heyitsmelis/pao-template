@@ -2,8 +2,8 @@ package ro.pao.service;
 
 import org.junit.jupiter.api.Test;
 import ro.pao.application.Menu;
-import ro.pao.model.ExampleClass;
-import ro.pao.service.impl.ExampleServiceImpl;
+import ro.pao.model.User;
+import ro.pao.service.impl.UserServiceImpl;
 
 import java.util.UUID;
 
@@ -18,10 +18,10 @@ import static org.junit.jupiter.api.Assertions.*;
  *
  * Aceste teste se cheama 'unitare' pentru ca se testeaza 'per unitate'
  */
-class ExampleServiceTest {
+class UserServiceTest {
 
     private final Menu menu = Menu.getInstance();
-    private final ExampleService eggService = new ExampleServiceImpl();
+    private final UserService eggService = new UserServiceImpl();
 
     /**
      * Dupa cum puteti vedea, metoda are 'o conventie'
@@ -36,11 +36,11 @@ class ExampleServiceTest {
         // given
         // pasul in care efectuam operatiile
 
-        ExampleClass exampleClass = ExampleClass.builder()
+        User user = User.builder()
                 .id(UUID.randomUUID())
                 .build();
 
-        eggService.addOnlyOne(exampleClass);
+        eggService.addOnlyOne(user);
 
         // then
         // pasul in care testam comportamentul dupa apelarea functiilor

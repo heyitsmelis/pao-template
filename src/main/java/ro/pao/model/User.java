@@ -3,7 +3,8 @@ package ro.pao.model;
 import lombok.Getter;
 import lombok.experimental.SuperBuilder;
 import ro.pao.model.abstracts.AbstractEntity;
-import ro.pao.model.enums.EnumExample;
+import ro.pao.model.enums.UserType;
+import java.util.UUID;
 
 /**
  * Exista @Builder si @SuperBuilder.
@@ -13,7 +14,11 @@ import ro.pao.model.enums.EnumExample;
  */
 @SuperBuilder
 @Getter
-public class ExampleClass extends AbstractEntity {
+public class User extends AbstractEntity {
 
-    private EnumExample enumExample;
+    private String firstName;
+    private String lastName;
+    private String userName;
+    private UUID userId;
+    private UserType userType;
 }
