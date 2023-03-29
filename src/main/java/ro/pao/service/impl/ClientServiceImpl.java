@@ -2,8 +2,8 @@ package ro.pao.service.impl;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import ro.pao.model.User;
-import ro.pao.service.UserService;
+import ro.pao.model.Client;
+import ro.pao.service.ClientService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
  */
 @NoArgsConstructor
 @Getter
-public class UserServiceImpl implements UserService {
+public class ClientServiceImpl implements ClientService {
 
     /**
      * Atentie sa fie static. Daca nu o sa fie static, fiecare instanta va avea propria ei lista si astfel vor aparea probleme la apelarea metodelor.
@@ -25,37 +25,37 @@ public class UserServiceImpl implements UserService {
      *
      * Puteti folosi diverse structuri de date in functie de nevoi, tinand cont de complexitate.
      */
-    private static List<User> userList = new ArrayList<>();
+    private static List<Client> clientList = new ArrayList<>();
     // private static Map<UUID, ExampleClass> exampleClassHashMap = new HashMap<>();
 
     @Override
-    public Optional<User> getById(UUID id) {
+    public Optional<Client> getById(UUID id) {
         return Optional.empty();
     }
 
     @Override
-    public Optional<User> getBySomeFieldOfClass(Object someFieldFromExampleClass) {
+    public Optional<Client> getBySomeFieldOfClass(Object someFieldFromExampleClass) {
         return Optional.empty();
     }
 
     @Override
-    public List<User> getAllFromList() {
-        return userList;
+    public List<Client> getAllFromList() {
+        return clientList;
     }
 
     @Override
-    public void addAllFromGivenList(List<User> userList) {
-        UserServiceImpl.userList.addAll(userList);
+    public void addAllFromGivenList(List<Client> clientList) {
+        ClientServiceImpl.clientList.addAll(clientList);
     }
 
     @Override
-    public void addOnlyOne(User user) {
-        userList.add(user);
+    public void addOnlyOne(Client client) {
+        clientList.add(client);
     }
 
     @Override
     public void removeElementById(UUID id) {
-        userList = userList.stream()
+        clientList = clientList.stream()
                 .filter(element -> !id.equals(element.getId())) // filtrez elementele astfel incat elementul cautat sa nu fie id-ul dat
                 // astfel, o sa avem o lista care nu contine elementul dat
                 .collect(Collectors.toList()); // daca folosim .toList() se va crea o lista imutabila.
@@ -63,7 +63,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void modificaElementById(UUID id, User newElement) {
+    public void modificaElementById(UUID id, Client newElement) {
         // sterg elementul dat si adaug altul
         removeElementById(id);
         addOnlyOne(newElement);

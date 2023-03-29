@@ -9,7 +9,7 @@ import java.util.Arrays;
 @AllArgsConstructor
 
 public enum FoodType {
-    MAINCOURSE("main-course"),
+    MAIN_COURSE("main-course"),
     DRINK("drink"),
     DESSERT("dessert"),
     APPETIZER("appetizer"),

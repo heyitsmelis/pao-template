@@ -1,9 +1,8 @@
 package ro.pao.model;
 
-import lombok.Getter;
+import lombok.*;
 import lombok.experimental.SuperBuilder;
 import ro.pao.model.abstracts.AbstractEntity;
-import ro.pao.model.enums.UserType;
 import java.util.UUID;
 
 /**
@@ -14,11 +13,15 @@ import java.util.UUID;
  */
 @SuperBuilder
 @Getter
-public class User extends AbstractEntity {
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@EqualsAndHashCode
+@ToString
+public class Client extends AbstractEntity {
 
     private String firstName;
     private String lastName;
     private String userName;
-    private UUID userId;
-    private UserType userType;
+    private UUID accountId;
 }

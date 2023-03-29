@@ -7,17 +7,17 @@ import java.util.Arrays;
 
 @Getter
 @AllArgsConstructor
-public enum UserType {
-    CLIENT("client"),
-    DELIVERY("delivery"),
-    NONE("none"); // in cazul in care nu este niciun field
+public enum VehicleType {
+    CAR("car"),
+    MOTORCYCLE("motorcycle"),
+    BICYCLE("bicycle"),
+    NONE("none");
 
     private final String typeString;
 
-    public static UserType getEnumByFieldString(String field) {
-        return Arrays.stream(UserType.values())
+    public static VehicleType getEnumByFieldString(String field) {
+        return Arrays.stream(VehicleType.values())
                 .filter(enumElement -> enumElement.typeString.equals(field))
                 .findAny()
                 .orElse(NONE); // in cazul in care nu este niciun field
-    }
-}
+    }}

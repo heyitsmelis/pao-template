@@ -1,8 +1,8 @@
 package ro.pao.application;
 
-import ro.pao.model.User;
-import ro.pao.service.UserService;
-import ro.pao.service.impl.UserServiceImpl;
+import ro.pao.model.Client;
+import ro.pao.service.ClientService;
+import ro.pao.service.impl.ClientServiceImpl;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -18,7 +18,7 @@ public class Menu {
 
     private static Menu INSTANCE;
 
-    private final UserService userService = new UserServiceImpl();
+    private final ClientService clientService = new ClientServiceImpl();
 
     public static Menu getInstance() {
         return (INSTANCE == null ? new Menu() : INSTANCE);
@@ -31,44 +31,44 @@ public class Menu {
 
         System.out.println(intro);
 
-        User user = User.builder()
+        Client client = Client.builder()
                 .id(UUID.randomUUID())
                 .creationDate(LocalDate.now()) // data de azi
                 .updateDate(LocalDate.now())
                 .deleteDate(LocalDate.now())
                 .build();
 
-        userService.addOnlyOne(user);
+        clientService.addOnlyOne(client);
 
-        List<User> exampleServiceList = List.of(
-                User.builder()
+        List<Client> exampleServiceList = List.of(
+                Client.builder()
                         .id(UUID.randomUUID())
                         .creationDate(LocalDate.of(2023, 03, 22))
                         .updateDate(LocalDate.now())
                         .build(),
-                User.builder()
+                Client.builder()
                         .id(UUID.randomUUID())
                         .creationDate(LocalDate.of(2023, 03, 22))
                         .updateDate(LocalDate.now())
                         .build()
         );
 
-        userService.addAllFromGivenList(exampleServiceList);
+        clientService.addAllFromGivenList(exampleServiceList);
 
         System.out.println("Inainte de stergere: ");
-        userService.getAllFromList()
+        clientService.getAllFromList()
                 .forEach(elementFromList -> System.out.println(elementFromList));
 
 
         System.out.println("Dupa modificare: ");
-        user.setUpdateDate(LocalDate.of(2, 2, 2));
-        userService.modificaElementById(user.getId(), user);
-        userService.getAllFromList()
+        client.setUpdateDate(LocalDate.of(2, 2, 2));
+        clientService.modificaElementById(client.getId(), client);
+        clientService.getAllFromList()
                 .forEach(elementFromList -> System.out.println(elementFromList));
 
         System.out.println("Dupa stergere: ");
-        userService.removeElementById(user.getId());
-        userService.getAllFromList()
+        clientService.removeElementById(client.getId());
+        clientService.getAllFromList()
                 .forEach(elementFromList -> System.out.println(elementFromList));
     }
 }
