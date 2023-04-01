@@ -2,9 +2,11 @@ package ro.pao.model;
 
 import lombok.*;
 import ro.pao.model.abstracts.AbstractEntity;
+import ro.pao.model.enums.FoodType;
 import ro.pao.model.enums.RestaurantType;
 
 import java.util.List;
+import java.util.Map;
 
 @Getter
 @Setter
@@ -22,5 +24,5 @@ public class Restaurant extends AbstractEntity {
 
     private RestaurantType restaurantType;
 
-    private List<Food> meniuList;
+    private Map<FoodType,Food> meniuMap;
 }

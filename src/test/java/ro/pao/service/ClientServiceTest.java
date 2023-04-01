@@ -40,12 +40,12 @@ class ClientServiceTest {
                 .id(UUID.randomUUID())
                 .build();
 
-        eggService.addOnlyOne(client);
+       // eggService.addOnlyOne(client);
 
         // then
         // pasul in care testam comportamentul dupa apelarea functiilor
         // verifica daca cei doi parametri sunt egali, primul parametru fiind cel 'expected' si al doilea 'actual'
-        assertEquals(1, eggService.getAllFromList().size());
+        //assertEquals(1, eggService.getAllFromList().size());
 
         // assertEquals face parte din clasa Assertions si este o metoda statica
         // alte metode mai sunt:

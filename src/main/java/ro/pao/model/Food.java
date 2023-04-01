@@ -26,4 +26,8 @@ public class Food extends AbstractEntity {
     private Integer foodQuantity;
 
     private List<Ingredient> ingrList;
+
+    public Food(String foodName, Float foodPrice, Float foodCalories, FoodType foodType, Integer foodQuantity) {
+
+    }
 }

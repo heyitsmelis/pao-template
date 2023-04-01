@@ -19,18 +19,9 @@ import java.util.UUID;
  * De exemplu: "getAnimalById", "removeAnimalById" etc.
  */
 public interface ClientService {
+    Client newClient();
+    List<Client> showAllClients();
 
-    Optional<Client> getById(UUID id);
 
-    Optional<Client> getBySomeFieldOfClass(Object someFieldFromUser);
 
-    List<Client> getAllFromList();
-
-    void addAllFromGivenList(List<Client> clientList);
-
-    void addOnlyOne(Client client);
-
-    void removeElementById(UUID id);
-
-    void modificaElementById(UUID id, Client newElement);
 }

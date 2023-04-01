@@ -15,9 +15,9 @@ import java.util.UUID;
 @Builder
 public class Order extends AbstractEntity {
 
-    private UUID userId;
-    private UUID restaurantId;
-    private List<Food> orderList;
+    private String userName;
+    private String restaurantName;
+    private String foodName;
     private OrderType orderType;
 
 }

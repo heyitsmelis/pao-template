@@ -22,9 +22,5 @@ public abstract class AbstractEntity {
      * LocalDate.of(), LocalDateTime.of(), LocalDateTime.now() sunt metode care se pot folosi.
      * Daca folositi LocalDateTime sa redenumiti si voi variabilele cu sens, adica sa fie ceva de genul creationDateTime, daca contin si ora.
      */
-    private LocalDate creationDate;
 
-    private LocalDate updateDate;
-
-    private LocalDate deleteDate;
 }
