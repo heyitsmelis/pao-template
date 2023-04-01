@@ -2,6 +2,7 @@ package ro.pao.service.impl;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import ro.pao.model.Driver;
 import ro.pao.model.Food;
 import ro.pao.model.Restaurant;
 import ro.pao.model.enums.FoodType;
@@ -42,5 +43,20 @@ public class RestaurantServiceImpl implements RestaurantService {
             System.out.println(shop);
         }
         return currentShop;
+    }
+    @Override
+    public List<Restaurant> showAllShops() {
+        return shopList;
+    }
+
+    @Override
+    public void removeShop(UUID id) {
+        shopList = shopList.stream()
+                .filter(obj -> !id.equals(obj.getId()))
+                .collect(Collectors.toList());
+    }
+    @Override
+    public Optional<Restaurant> getShopbyId(UUID id) {
+        return Optional.empty();
     }
 }

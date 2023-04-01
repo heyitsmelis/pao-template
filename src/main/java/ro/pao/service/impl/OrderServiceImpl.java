@@ -2,17 +2,13 @@ package ro.pao.service.impl;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import ro.pao.model.Client;
-import ro.pao.model.Food;
-import ro.pao.model.Order;
-import ro.pao.model.Restaurant;
+import ro.pao.model.*;
 import ro.pao.model.enums.FoodType;
 import ro.pao.model.enums.OrderType;
 import ro.pao.service.OrderService;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @NoArgsConstructor
 @Getter
@@ -44,4 +40,20 @@ public class OrderServiceImpl implements OrderService {
         }
         return currentOrder;
     }
+    @Override
+    public List<Order> showAllOrders() {
+        return orderList;
+    }
+
+    @Override
+    public void removeOrder(UUID id) {
+        orderList = orderList.stream()
+                .filter(obj -> !id.equals(obj.getId()))
+                .collect(Collectors.toList());
+    }
+    @Override
+    public Optional<Order> getOrderbyId(UUID id) {
+        return Optional.empty();
+    }
 }
+

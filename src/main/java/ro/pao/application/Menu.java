@@ -2,11 +2,11 @@ package ro.pao.application;
 
 import ro.pao.model.Client;
 import ro.pao.service.ClientService;
-import ro.pao.service.impl.ClientServiceImpl;
-import ro.pao.service.impl.DriverServiceImpl;
+import ro.pao.service.impl.*;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Scanner;
 import java.util.UUID;
 
 /**
@@ -27,17 +27,55 @@ public class Menu {
 
     private ClientServiceImpl clientImpl = new  ClientServiceImpl();
     private DriverServiceImpl driverImpl = new DriverServiceImpl();
+    private FoodServiceImpl foodImpl = new FoodServiceImpl();
+    private IngredientServiceImpl ingrImpl = new IngredientServiceImpl();
+    private OrderServiceImpl orderImpl = new OrderServiceImpl();
+    private RestaurantServiceImpl shopImpl = new RestaurantServiceImpl();
 
+    public Scanner scanner = new Scanner(System.in);
 
     public void intro() {
         String intro = """
-                Intro example
+                Bine ati venit pe platforma "FoodKoala"! Cu ce va putem ajuta?
+                WIP
                 """;
 
         System.out.println(intro);
-        //clientImpl.newClient();
-        //driverImpl.newDriver();
-        //clientImpl.showAllClients();
+        System.out.println("1) Creeaza un cont nou");
+        System.out.println("2) Adauga un sofer nou");
+        System.out.println("3) Adauga un restaurant nou");
+        System.out.println("4) Adauga o mancare noua");
+        System.out.println("5) Adauga un ingredient nou");
+        System.out.println("6) Efectueaza o comanda");
+        System.out.println("7) Exit");
+
+        int option = scanner.nextInt();
+        switch (option) {
+            case 1:
+                clientImpl.newClient();
+                break;
+            case 2:
+                driverImpl.newDriver();
+                break;
+            case 3:
+                shopImpl.newRestaurant();
+                break;
+            case 4:
+                foodImpl.newFood();
+                break;
+            case 5:
+                ingrImpl.newIngr();
+                break;
+            case 6:
+                orderImpl.newOrder();
+                break;
+
+            case 7:
+                System.out.println("Va mai asteptam pe la noi :)");
+                break;
+
+            default:
+                System.out.println("Invalid option! :(");
 
         //Client client = Client.builder()
                 //.id(UUID.randomUUID())
@@ -79,4 +117,4 @@ public class Menu {
 //        clientService.getAllFromList()
 //                .forEach(elementFromList -> System.out.println(elementFromList));
     }
-}
+}}

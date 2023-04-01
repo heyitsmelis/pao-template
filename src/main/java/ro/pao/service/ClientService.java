@@ -23,7 +23,6 @@ public interface ClientService {
     Client newClient();
     List<Client> showAllClients();
     void removeClient(UUID id);
-
     Optional<Client> getClientbyId(UUID id);
 
 }

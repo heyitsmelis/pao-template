@@ -56,7 +56,6 @@ public class DriverServiceImpl implements DriverService {
                 .filter(obj -> !id.equals(obj.getId()))
                 .collect(Collectors.toList());
     }
-
     @Override
     public Optional<Driver> getDriverbyId(UUID id) {
         return Optional.empty();
