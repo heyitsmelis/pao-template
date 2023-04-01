@@ -3,6 +3,7 @@ package ro.pao.service.impl;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import ro.pao.model.Client;
+import ro.pao.model.Driver;
 import ro.pao.model.Restaurant;
 import ro.pao.service.ClientService;
 
@@ -52,6 +53,16 @@ public class ClientServiceImpl implements ClientService {
         return clientList;
     }
 
+    @Override
+    public void removeClient(UUID id) {
+        clientList = clientList.stream()
+                .filter(obj -> !id.equals(obj.getId()))
+                .collect(Collectors.toList());
+    }
 
-
+    @Override
+    public Optional<Client> getClientbyId(UUID id) {
+        return Optional.empty();
+    }
 }
+

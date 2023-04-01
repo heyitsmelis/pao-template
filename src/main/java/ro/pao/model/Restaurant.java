@@ -24,5 +24,5 @@ public class Restaurant extends AbstractEntity {
 
     private RestaurantType restaurantType;
 
-    private Map<FoodType,Food> meniuMap;
+    //private Map<FoodType,Food> meniuMap;
 }

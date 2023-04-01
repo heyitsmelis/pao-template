@@ -7,10 +7,9 @@ import ro.pao.model.Driver;
 import ro.pao.model.enums.VehicleType;
 import ro.pao.service.DriverService;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-import java.util.UUID;
+import java.util.*;
+import java.util.stream.Collectors;
+
 @NoArgsConstructor
 @Getter
 public class DriverServiceImpl implements DriverService {
@@ -45,4 +44,22 @@ public class DriverServiceImpl implements DriverService {
         }
         return currentDriver;
     }
+
+    @Override
+    public List<Driver> showAllDrivers() {
+        return driverList;
+    }
+
+    @Override
+    public void removeDriver(UUID id) {
+        driverList = driverList.stream()
+                .filter(obj -> !id.equals(obj.getId()))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public Optional<Driver> getDriverbyId(UUID id) {
+        return Optional.empty();
+    }
 }
+

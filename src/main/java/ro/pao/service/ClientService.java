@@ -1,6 +1,7 @@
 package ro.pao.service;
 
 import ro.pao.model.Client;
+import ro.pao.model.Driver;
 
 import java.util.List;
 import java.util.Optional;
@@ -21,7 +22,8 @@ import java.util.UUID;
 public interface ClientService {
     Client newClient();
     List<Client> showAllClients();
+    void removeClient(UUID id);
 
-
+    Optional<Client> getClientbyId(UUID id);
 
 }
