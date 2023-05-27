@@ -23,7 +23,7 @@ public class IngredientMapper {
     }
 
 
-    public static Optional<Ingredient> mapIngrClass(ResultSet resultSet) throws SQLException {
+    public static Optional<Ingredient> mapIngredientClass(ResultSet resultSet) throws SQLException {
         if (resultSet.next()) {
             return Optional.of(
                     Ingredient.builder()

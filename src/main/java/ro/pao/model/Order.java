@@ -21,4 +21,10 @@ public class Order extends AbstractEntity {
     private String foodName;
     private OrderType orderType;
 
+    public Order(String userName, String restaurantName, String foodName, OrderType orderType) {
+    }
+
+    public String getOrderStringField() {
+        return null;
+    }
 }

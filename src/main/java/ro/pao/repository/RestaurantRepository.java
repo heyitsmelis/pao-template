@@ -14,9 +14,9 @@ public interface RestaurantRepository {
 
     void updateObjectById(UUID id, Restaurant newObject);
 
-    void addNewObject(Restaurant exampleClass);
+    void addNewObject(Restaurant restaurant);
 
     List<Restaurant> getAll();
 
-    void addAllFromGivenList(List<Restaurant> exampleClassList);
+    void addAllFromGivenList(List<Restaurant> restaurantList);
 }

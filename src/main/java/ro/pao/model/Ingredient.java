@@ -16,4 +16,7 @@ public class Ingredient extends AbstractEntity {
     private UUID id;
     private String ingredientName;
 
+    public String getIngredientStringField() {
+        return null;
+    }
 }

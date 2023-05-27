@@ -23,5 +23,10 @@ public class Client extends AbstractEntity {
     private String firstName;
     private String lastName;
     private String userName;
-;
+
+    public String getClientStringField() {
+        return null;
+    }
+
+    ;
 }

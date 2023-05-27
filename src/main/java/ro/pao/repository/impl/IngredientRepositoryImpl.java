@@ -1,9 +1,9 @@
 package ro.pao.repository.impl;
 
 import ro.pao.config.DatabaseConfiguration;
-import ro.pao.mapper.RestaurantMapper;
-import ro.pao.model.Restaurant;
-import ro.pao.repository.RestaurantRepository;
+import ro.pao.mapper.IngredientMapper;
+import ro.pao.model.Ingredient;
+import ro.pao.repository.IngredientRepository;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -13,20 +13,20 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-public class RestaurantRepositoryImpl implements RestaurantRepository {
+public class IngredientRepositoryImpl implements IngredientRepository {
 
-    private static final RestaurantMapper restaurantMapper = RestaurantMapper.getInstance();
+    private static final IngredientMapper ingredientMapper = IngredientMapper.getInstance();
 
     @Override
-    public Optional<Restaurant> getObjectById(UUID id) {
-        String selectSql = "SELECT * FROM restaurant WHERE restaurant_id=?";
+    public Optional<Ingredient> getObjectById(UUID id) {
+        String selectSql = "SELECT * FROM ingredient WHERE ingredient_id=?";
 
         try (Connection connection = DatabaseConfiguration.getDatabaseConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(selectSql)) {
             preparedStatement.setString(1, id.toString());
 
             ResultSet resultSet = preparedStatement.executeQuery();
-            return RestaurantMapper.mapRestaurantClass(resultSet);
+            return IngredientMapper.mapIngredientClass(resultSet);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -36,7 +36,7 @@ public class RestaurantRepositoryImpl implements RestaurantRepository {
 
     @Override
     public void deleteObjectById(UUID id) {
-        String updateNameSql = "DELETE FROM restaurant WHERE restaurant_id=?";
+        String updateNameSql = "DELETE FROM ingredient WHERE ingredient_id=?";
 
         try (Connection connection = DatabaseConfiguration.getDatabaseConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(updateNameSql)) {
@@ -49,12 +49,12 @@ public class RestaurantRepositoryImpl implements RestaurantRepository {
     }
 
     @Override
-    public void updateObjectById(UUID id, Restaurant newObject) {
-        String updateNameSql = "UPDATE restaurant SET restaurant_name=? WHERE restaurant_id=?";
+    public void updateObjectById(UUID id, Ingredient newObject) {
+        String updateNameSql = "UPDATE ingredient SET ingredient_name=? WHERE ingredient_id=?";
 
         try (Connection connection = DatabaseConfiguration.getDatabaseConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(updateNameSql)) {
-            preparedStatement.setString(1, newObject.getRestaurantStringField());
+            preparedStatement.setString(1, newObject.getIngredientStringField());
             preparedStatement.setString(2, id.toString());
 
             preparedStatement.executeUpdate();
@@ -64,16 +64,13 @@ public class RestaurantRepositoryImpl implements RestaurantRepository {
     }
 
     @Override
-    public void addNewObject(Restaurant restaurant) {
-        String insertSql = "INSERT INTO restaurant (restaurant_id, restaurant_name, restaurant_address, restaurant_type) VALUES (?, ?, ?, ?)";
+    public void addNewObject(Ingredient ingredient) {
+        String insertSql = "INSERT INTO ingredient (ingredient_id, ingredient_name) VALUES (?, ?)";
 
         try (Connection connection = DatabaseConfiguration.getDatabaseConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(insertSql)) {
-            preparedStatement.setString(1, restaurant.getId().toString());
-            preparedStatement.setString(2, restaurant.getRestaurantStringField());
-            preparedStatement.setString(3, restaurant.getRestaurantStringField());
-            preparedStatement.setString(4, String.valueOf(restaurant.getRestaurantType()));
-
+            preparedStatement.setString(1, ingredient.getId().toString());
+            preparedStatement.setString(2, ingredient.getIngredientStringField());
 
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
@@ -82,14 +79,14 @@ public class RestaurantRepositoryImpl implements RestaurantRepository {
     }
 
     @Override
-    public List<Restaurant> getAll() {
-        String selectSql = "SELECT * FROM restaurant";
+    public List<Ingredient> getAll() {
+        String selectSql = "SELECT * FROM ingredient";
 
         try (Connection connection = DatabaseConfiguration.getDatabaseConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(selectSql)) {
 
             ResultSet resultSet = preparedStatement.executeQuery();
-            return RestaurantMapper.mapToRestaurantList(resultSet);
+            return IngredientMapper.mapToIngrList(resultSet);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -98,7 +95,7 @@ public class RestaurantRepositoryImpl implements RestaurantRepository {
     }
 
     @Override
-    public void addAllFromGivenList(List<Restaurant> restaurantList) {
-        restaurantList.forEach(this::addNewObject);
+    public void addAllFromGivenList(List<Ingredient> ingredientList) {
+        ingredientList.forEach(this::addNewObject);
     }
 }

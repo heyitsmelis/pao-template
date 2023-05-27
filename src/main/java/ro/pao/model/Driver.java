@@ -22,4 +22,8 @@ public class Driver extends AbstractEntity {
     private String lastName;
     private String userName;
     private VehicleType vehicleType;
+
+    public String getDriverStringField() {
+        return null;
+    }
 }

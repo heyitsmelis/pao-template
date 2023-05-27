@@ -32,4 +32,8 @@ public class Food extends AbstractEntity {
     public Food(String foodName, Float foodPrice, Float foodCalories, FoodType foodType, Integer foodQuantity) {
 
     }
+
+ public String getFoodStringField() {
+  return null;
+ }
 }

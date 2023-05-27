@@ -39,7 +39,7 @@ public class DriverMapper {
         }
     }
 
-    public static List<Driver> mapToClientList(ResultSet resultSet) throws SQLException {
+    public static List<Driver> mapToDriverList(ResultSet resultSet) throws SQLException {
         List<Driver> driverList = new ArrayList<>();
         while (resultSet.next()) {
             driverList.add(
