@@ -7,6 +7,7 @@ import ro.pao.model.enums.RestaurantType;
 
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 @Getter
 @Setter
@@ -17,12 +18,19 @@ import java.util.Map;
 @Builder
 
 public class Restaurant extends AbstractEntity {
-
+    private UUID id;
     private String shopName;
 
     private String shopAdress;
 
     private RestaurantType restaurantType;
+
+    public Restaurant(String shopName, String shopAdress, RestaurantType restaurantType) {
+    }
+
+    public String getRestaurantStringField() {
+        return null;
+    }
 
     //private Map<FoodType,Food> meniuMap;
 }

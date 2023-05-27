@@ -23,5 +23,5 @@ public class Client extends AbstractEntity {
     private String firstName;
     private String lastName;
     private String userName;
-    private UUID accountId;
+;
 }

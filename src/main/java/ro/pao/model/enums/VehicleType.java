@@ -1,6 +1,7 @@
 package ro.pao.model.enums;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 
 import java.util.Arrays;
@@ -20,4 +21,6 @@ public enum VehicleType {
                 .filter(enumElement -> enumElement.typeString.equals(field))
                 .findAny()
                 .orElse(NONE); // in cazul in care nu este niciun field
-    }}
+    }
+
+}

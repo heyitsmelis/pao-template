@@ -14,6 +14,7 @@ import java.util.UUID;
 @ToString
 @Builder
 public class Order extends AbstractEntity {
+    private UUID id;
 
     private String userName;
     private String restaurantName;

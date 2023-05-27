@@ -1,9 +1,9 @@
-/*package ro.pao.repository.impl;
+package ro.pao.repository.impl;
 
 import ro.pao.config.DatabaseConfiguration;
-import ro.pao.mapper.ExampleClassMapper;
-import ro.pao.model.ExampleClass;
-import ro.pao.repository.ExampleRepository;
+import ro.pao.mapper.RestaurantMapper;
+import ro.pao.model.Restaurant;
+import ro.pao.repository.RestaurantRepository;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -13,20 +13,20 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-public class ExampleRepositoryImpl implements ExampleRepository {
+public class RestaurantRepositoryImpl implements RestaurantRepository {
 
-    private static final ExampleClassMapper exampleClassMapper = ExampleClassMapper.getInstance();
+    private static final RestaurantMapper exampleClassMapper = RestaurantMapper.getInstance();
 
     @Override
-    public Optional<ExampleClass> getObjectById(UUID id) {
-        String selectSql = "SELECT * FROM example_table WHERE id=?";
+    public Optional<Restaurant> getObjectById(UUID id) {
+        String selectSql = "SELECT * FROM restaurant WHERE id=?";
 
         try (Connection connection = DatabaseConfiguration.getDatabaseConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(selectSql)) {
             preparedStatement.setString(1, id.toString());
 
             ResultSet resultSet = preparedStatement.executeQuery();
-            return exampleClassMapper.mapToExampleClass(resultSet);
+            return RestaurantMapper.mapRestaurantClass(resultSet);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -36,7 +36,7 @@ public class ExampleRepositoryImpl implements ExampleRepository {
 
     @Override
     public void deleteObjectById(UUID id) {
-        String updateNameSql = "DELETE FROM example_table WHERE id=?";
+        String updateNameSql = "DELETE FROM restaurant WHERE id=?";
 
         try (Connection connection = DatabaseConfiguration.getDatabaseConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(updateNameSql)) {
@@ -49,12 +49,12 @@ public class ExampleRepositoryImpl implements ExampleRepository {
     }
 
     @Override
-    public void updateObjectById(UUID id, ExampleClass newObject) {
-        String updateNameSql = "UPDATE example_table SET name=? WHERE id=?";
+    public void updateObjectById(UUID id, Restaurant newObject) {
+        String updateNameSql = "UPDATE restaurant SET name=? WHERE id=?";
 
         try (Connection connection = DatabaseConfiguration.getDatabaseConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(updateNameSql)) {
-            preparedStatement.setString(1, newObject.getExampleStringField());
+            preparedStatement.setString(1, newObject.getRestaurantStringField());
             preparedStatement.setString(2, id.toString());
 
             preparedStatement.executeUpdate();
@@ -64,13 +64,13 @@ public class ExampleRepositoryImpl implements ExampleRepository {
     }
 
     @Override
-    public void addNewObject(ExampleClass exampleClass) {
+    public void addNewObject(Restaurant exampleClass) {
         String insertSql = "INSERT INTO example_table (id, name) VALUES (?, ?)";
 
         try (Connection connection = DatabaseConfiguration.getDatabaseConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(insertSql)) {
             preparedStatement.setString(1, exampleClass.getId().toString());
-            preparedStatement.setString(2, exampleClass.getExampleStringField());
+            preparedStatement.setString(2, exampleClass.getRestaurantStringField());
 
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
@@ -79,14 +79,14 @@ public class ExampleRepositoryImpl implements ExampleRepository {
     }
 
     @Override
-    public List<ExampleClass> getAll() {
+    public List<Restaurant> getAll() {
         String selectSql = "SELECT * FROM example_table";
 
         try (Connection connection = DatabaseConfiguration.getDatabaseConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(selectSql)) {
 
             ResultSet resultSet = preparedStatement.executeQuery();
-            return exampleClassMapper.mapToExampleClassList(resultSet);
+            return RestaurantMapper.mapToRestaurantList(resultSet);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -95,7 +95,7 @@ public class ExampleRepositoryImpl implements ExampleRepository {
     }
 
     @Override
-    public void addAllFromGivenList(List<ExampleClass> exampleClassList) {
+    public void addAllFromGivenList(List<Restaurant> exampleClassList) {
         exampleClassList.forEach(this::addNewObject);
     }
-}*/
+}

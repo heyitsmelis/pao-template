@@ -15,7 +15,7 @@ import java.util.UUID;
 @EqualsAndHashCode
 public abstract class AbstractEntity {
 
-    private UUID id;
+    protected UUID id;
 
     /**2
      * Date nu stocheaza decat data, nu si ora. Daca vreti sa adaugati si ora, folositi LocalDateTime.

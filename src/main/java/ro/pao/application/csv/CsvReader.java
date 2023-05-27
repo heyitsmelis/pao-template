@@ -1,4 +1,4 @@
-/*package ro.pao.application.csv;
+package ro.pao.application.csv;
 
 import com.opencsv.CSVReader;
 import ro.pao.exceptions.CustomFileNotFoundException;
@@ -66,4 +66,4 @@ public class CsvReader {
 
         return readAllLines(path);
     }
-}*/
+}
