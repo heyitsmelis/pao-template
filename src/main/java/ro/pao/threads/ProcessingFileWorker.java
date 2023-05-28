@@ -2,7 +2,8 @@ package ro.pao.threads;
 
 import lombok.AllArgsConstructor;
 import ro.pao.application.csv.CsvReader;
-import ro.pao.exceptions.CustomFileNotFoundException;
+import ro.pao.exceptions.ObjectNotFoundException;
+import ro.pao.exceptions.ObjectNotFoundException;
 
 import java.nio.file.Path;
 import java.util.List;
@@ -27,7 +28,7 @@ public class ProcessingFileWorker implements Runnable {
         try {
             logger.log(Level.INFO, () -> Thread.currentThread().getName() + " processing " + fileName);
             result.add(csvReader.readAllLines(filePath));
-        } catch (CustomFileNotFoundException e) {
+        } catch (ObjectNotFoundException e) {
             logger.log(Level.WARNING, e.getMessage());
         } catch (Exception e) {
             logger.log(Level.SEVERE, e.getMessage());
