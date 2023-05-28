@@ -27,6 +27,8 @@ public class ClientServiceImpl implements ClientService {
     public Client newClient(){
         Client currentClient = null;
 
+        UUID id = UUID.randomUUID();
+
         System.out.println("Prenume:");
         String firstName = scanner.nextLine();
 
@@ -36,9 +38,9 @@ public class ClientServiceImpl implements ClientService {
         System.out.println("Nume de utilizator:");
         String userName = scanner.nextLine();
 
-        UUID accountId = UUID.randomUUID();
 
-        currentClient = new Client(firstName, lastName, userName, accountId);
+
+        currentClient = new Client(id, firstName, lastName, userName);
         clientList.add(currentClient);
 
         System.out.println("Client creat cu success!");

@@ -14,10 +14,9 @@ import java.util.UUID;
 @AllArgsConstructor
 @EqualsAndHashCode
 @ToString
-@Builder
 @SuperBuilder
 public class Driver extends AbstractEntity {
-    private UUID id;
+    private UUID driver_id;
     private String firstName;
     private String lastName;
     private String userName;

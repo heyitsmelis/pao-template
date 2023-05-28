@@ -23,10 +23,12 @@ public class IngredientServiceImpl implements IngredientService {
     public Ingredient newIngr(){
         Ingredient currentIngr = null;
 
+        UUID id = UUID.randomUUID();
+
         System.out.println("Denumire ingredient:");
         String ingredientName = scanner.nextLine();
 
-        currentIngr = new Ingredient(ingredientName);
+        currentIngr = new Ingredient(id, ingredientName);
         ingredientList.add(currentIngr);
 
         System.out.println("Ingredient adaugat cu success!");

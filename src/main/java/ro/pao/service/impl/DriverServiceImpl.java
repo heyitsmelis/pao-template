@@ -20,6 +20,8 @@ public class DriverServiceImpl implements DriverService {
     public Driver newDriver(){
         Driver currentDriver = null;
 
+        UUID driver_id = UUID.randomUUID();
+
         System.out.println("Prenume:");
         String firstName = scanner.nextLine();
 
@@ -29,12 +31,12 @@ public class DriverServiceImpl implements DriverService {
         System.out.println("Nume de utilizator:");
         String userName = scanner.nextLine();
 
-        UUID accountId = UUID.randomUUID();
+        //UUID accountId = UUID.randomUUID();
 
         System.out.println("Tipul de vehicul:");
         VehicleType vehicleType = VehicleType.getEnumByFieldString(scanner.nextLine());
 
-        currentDriver = new Driver(firstName, lastName, userName, accountId,vehicleType);
+        currentDriver = new Driver( driver_id, firstName, lastName, userName,vehicleType);
         driverList.add(currentDriver);
 
         System.out.println("Driver creat cu success!");

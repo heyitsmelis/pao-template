@@ -14,7 +14,7 @@ public class Main {
 
             menu.intro();
 
-            if ("exit".equals(scanner.next())) {
+            if ("7".equals(scanner.next())) {
                 break;
             }
         }

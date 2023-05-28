@@ -20,9 +20,12 @@ import java.util.UUID;
 @ToString
 public class Client extends AbstractEntity {
 
+    private UUID id;
     private String firstName;
     private String lastName;
     private String userName;
+
+
 
     public String getClientStringField() {
         return null;
